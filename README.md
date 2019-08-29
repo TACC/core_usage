@@ -5,7 +5,7 @@ To compile, <br>
 `g++ -O2 -o core_usage core_usage.cpp -lX11 -lncurses`
 
 To run core_usage<br>
-`./a.out [<int>] [txt]<br>`
+`./a.out [<int>] [txt]`<br>
 The parameter <int> is the time interval of updating core unitlization data and the unit is second. Without it, 1.0 is used as default. <br>
 Parameter "txt" forces core_usage to run in console version although X11 is available. 
 
