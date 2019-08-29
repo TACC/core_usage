@@ -1,10 +1,47 @@
+/*************************************************************************
+--------------------------------------------------------------------------
+--  core_usage License
+--------------------------------------------------------------------------
+--
+--  core_usage is licensed under the terms of the MIT license reproduced
+--  below. This means that Lmod is free software and can be used for both
+--  academic and commercial purposes at absolutely no cost.
+--
+--  ----------------------------------------------------------------------
+--
+--  Copyright (C) 2017-2019 Lei Huang
+--
+--  Permission is hereby granted, free of charge, to any person obtaining
+--  a copy of this software and associated documentation files (the
+--  "Software"), to deal in the Software without restriction, including
+--  without limitation the rights to use, copy, modify, merge, publish,
+--  distribute, sublicense, and/or sell copies of the Software, and to
+--  permit persons to whom the Software is furnished to do so, subject
+--  to the following conditions:
+--
+--  The above copyright notice and this permission notice shall be
+--  included in all copies or substantial portions of the Software.
+--
+--  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+--  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+--  OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+--  NONINFRINGEMENT.  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+--  BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+--  ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+--  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+--  THE SOFTWARE.
+--
+--------------------------------------------------------------------------
+*************************************************************************/
+
+
 // Compile: g++ -O2 -o core_usage core_usage.cpp -lX11 -lncurses
-// Run:     ./a.out 0.3
+// Run:     ./a.out 1.0
 //                  the time interval (in seconds) for info update
 //          The GUI will show up if X11 is available. If not, the 
 //          console version will run. If you want to run the console 
 //          version even you have X11, 
-//          ./a.out 0.3 txt_mode
+//          ./a.out 1.0 txt_mode
 
 // Written by Lei Huang at Texas Advanced Computing Center.
 //
@@ -204,7 +241,7 @@ public:
 };
 
 xtimer *t;
-float tInterval=0.3;
+float tInterval=1.0;
 
 WINDOW * mainwin;
 
