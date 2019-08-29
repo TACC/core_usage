@@ -1,18 +1,19 @@
 # core_usage
 The little GUI to show the usage of all cores. 
 
-To compile, 
-g++ -O2 -o core_usage core_usage.cpp -lX11 -lncurses
+To compile, <br>
+`g++ -O2 -o core_usage core_usage.cpp -lX11 -lncurses`
 
-Usage: ./a.out 0.2
-The parameter is the time interval of updating core unitlization data. Without it, 0.3 is used as default. 
-X11 environment is needed to run.
+To run core_usage<br>
+`./core_usage [<int>] [txt]`<br><br>
+The parameter <int> is the time interval of updating core unitlization data and the unit is second. Without it, 1.0 is used as default. <br>
+Parameter "txt" forces core_usage to run in console version although X11 is available. 
 
-The GUI will show up if X11 is available. If not, the console version will run. If you want to run the console version even you have X11, 
-       ./a.out 0.3 txt_mode
+The GUI will show up if X11 is available. If not, the console version will run. If you want to run the console version even you have X11, <br>
+`./core_usage 1.0 txt`<br><br>
 
 Screen snapshot of GUI
-![Alt text](core_usage_knl.jpg?raw=true "Screen snapshot of GUI")
-
+![Alt text](core_usage_skx_gui.png?raw=true "Screen snapshot of GUI")
+<br>
 Screen snapshot of the terminal version
-![Alt text](core_usage_knl_terminal_color.jpg?raw=true "Screen snapshot of terminal version")
+![Alt text](core_usage_ter.png?raw=true "Screen snapshot of terminal version")
