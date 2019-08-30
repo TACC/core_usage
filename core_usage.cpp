@@ -36,12 +36,12 @@
 
 
 // Compile: g++ -O2 -o core_usage core_usage.cpp -lX11 -lncurses
-// Run:     ./a.out 1.0
-//                  the time interval (in seconds) for info update
+// Run:     ./core_usage [t_interval] [txt]
+//          t_interval - the time interval (in seconds) for info update
 //          The GUI will show up if X11 is available. If not, the 
 //          console version will run. If you want to run the console 
-//          version even you have X11, 
-//          ./a.out 1.0 txt_mode
+//          version even you have X11, you can add parammeter "txt". 
+//          ./core_usage 1.0 txt
 
 // Written by Lei Huang at Texas Advanced Computing Center.
 //
