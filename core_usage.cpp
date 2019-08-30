@@ -72,9 +72,9 @@
 #define MAX_APP		(6)
 #define MAX_APP_NAME_LEN	(16)
 
-#ifndef max(a,b)
+//#ifndef max(a,b)
 #define max(a,b)	(((a)>(b))?(a):(b))
-#endif
+//#endif
 
 #ifndef timeradd
 # define timeradd(a, b, result)							\
@@ -390,13 +390,25 @@ int main(int argc, char *argv[]) {
 	XEvent ev;
 	
 	if(argc >= 2)	{
-		tInterval = atof(argv[1]);
-		if(argc == 3)	{	// Run the terminal version
+		if( (argv[1][0] >= '0') && (argv[1][0] <= '9') )	{
+			tInterval = atof(argv[1]);
+			if( argc >= 3 )	{
+				if(strcmp(argv[2], "txt")==0)	{
+					GUI_On = 0;
+				}
+			}
+		}
+		else if( strcmp(argv[1], "txt")==0 )	{
 			GUI_On = 0;
-      printf("To run the console version after one second.\n");
+			if( argc >= 3 ) {
+				if( (argv[2][0] >= '0') && (argv[2][0] <= '9') )        {
+					tInterval = atof(argv[2]);
+				}
+			}
 		}
 	}
-	
+	if(GUI_On == 0) printf("To run the console version after one second.\n");	
+
 	Init_Core_Stat();
 	Read_Proc_Stat();
 	Setup_bar_width();
