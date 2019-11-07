@@ -346,7 +346,8 @@ void Run_Terminal_version(void)
 			if(i % nCore_Socket == 0)	{
 				attron(A_BOLD);
 //				attron(A_UNDERLINE);
-				mvprintw(3+(i%nLine), 1+Width*(i/nLine), "CORE %3d: ", i);
+				mvprintw(3+(i%nLine), 1+Width*(i/nLine), "Core %3d: ", i);
+//				mvprintw(3+(i%nLine), 1+Width*(i/nLine), "CORE %3d: ", i);
 //				attroff(A_UNDERLINE);
 				attroff(A_BOLD);
 			}
@@ -481,7 +482,7 @@ void DrawLines(void)
 {
 	char szCoreIdx[5][64]={"0", "xx", "xx", "xx", "271"};
 	const char *szUsage[]={"0%", "50%", "100%"};
-	const char *szAxis[]={"Core Id", "Utilization"};
+	const char *szAxis[]={"proc-id", "Utilization"};
 	char szMonth[8], szDay[8], szHour[8], szMin[8], szSec[8];
 	XSegment line_list[4];
 	int nMid, nMid_L, nMid_R;
