@@ -285,6 +285,7 @@ void Run_Terminal_version(void)
 	}
 	else	{
 		nLine = (nCPU+2)/3;		nCol = 3;
+		Width += 4;
 	}
 	
     noecho();                  /*  Turn off key echoing                 */
