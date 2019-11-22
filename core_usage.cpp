@@ -129,6 +129,10 @@ char szAppList[MAX_CORE][MAX_APP][MAX_APP_NAME_LEN];
 int bar_width, bar_height=200, extra=55, x0, y0, win_width, win_height;
 char szHostName[256];
 
+int bLog_CPU_Usage=0, nCountLog=0;
+double tNow=0.0;
+void Output_Core_Usage(void);
+
 void timerFired();
 void Init_Core_Stat();
 void Read_Proc_Stat(void);
@@ -180,6 +184,8 @@ void Cal_Core_Usage(void)
 	}
 	
 	Save_Core_Stat();
+
+	if(bLog_CPU_Usage)	Output_Core_Usage();
 }
 
 class xtimer {	
@@ -390,6 +396,7 @@ void Run_Terminal_version(void)
 int main(int argc, char *argv[]) {
 	int Run=1, GUI_On=1;
 	XEvent ev;
+	char *szEnv_Log_CPU_Usage;
 	
 	if(argc >= 2)	{
 		if( (argv[1][0] >= '0') && (argv[1][0] <= '9') )	{
@@ -410,6 +417,11 @@ int main(int argc, char *argv[]) {
 		}
 	}
 	if(GUI_On == 0) printf("To run the console version after one second.\n");	
+
+	szEnv_Log_CPU_Usage = getenv("LOG_CORE_USAGE");
+	if( (strcmp(szEnv_Log_CPU_Usage,"1")==0) || (strcmp(szEnv_Log_CPU_Usage,"YES")==0) || (strcmp(szEnv_Log_CPU_Usage,"ON")==0) )	{
+		bLog_CPU_Usage = 1;
+	}
 
 	Init_Core_Stat();
 	Read_Proc_Stat();
@@ -893,5 +905,38 @@ int Is_Thread_Running(char szName[])
 	else	return 0;
 }
 
+void Output_Core_Usage(void)
+{
+	char szName[128];
+	FILE *fLog;
+	int i;
+
+	sprintf(szName, "log_core_usage_%s.txt", szHostName);
+	fLog = fopen(szName, "a+");
+	if(fLog == NULL)	{
+		printf("Fail to open file: %s\nQuit\n", szName);
+	}
+	fseek(fLog, 0, SEEK_END);
+	
+	if(nCountLog == 0)	{
+		fprintf(fLog, "     t   ");
+		for(i=0; i<nCore; i++)	{
+			if(i<10)	{
+				fprintf(fLog, "c-%d  ", i);
+			}
+			else fprintf(fLog, "c-%d ", i);
+		}
+		fprintf(fLog, "\n");
+	}
+
+	fprintf(fLog, " %7.1lf ", tNow);
+	for(i=0; i<nCore; i++)  {
+		fprintf(fLog, "%4.2lf ", Core_Usage[i]);
+	}
+	fprintf(fLog, "\n");
+	fclose(fLog);
+	tNow += tInterval;
+	nCountLog++;
+}
 
 
