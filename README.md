@@ -12,6 +12,10 @@ Parameter "txt" forces core_usage to run in console version although X11 is avai
 The GUI will show up if X11 is available. If not, the console version will run. If you want to run the console version even you have X11, <br>
 `./core_usage 1.0 txt`<br><br>
 
+In case you want to save core usage info into log file, you can<br>
+`export LOG_CORE_USAGE=1` <br>
+before running core_usage. <br>
+
 Screen snapshot of GUI
 ![Alt text](core_usage_skx_gui.png?raw=true "Screen snapshot of GUI")
 <br>
