@@ -15,6 +15,7 @@ The GUI will show up if X11 is available. If not, the console version will run. 
 In case you want to save core usage info into log file, you can<br>
 `export LOG_CORE_USAGE=1` <br>
 before running core_usage. <br>
+<br>
 
 Screen snapshot of GUI
 ![Alt text](core_usage_skx_gui.png?raw=true "Screen snapshot of GUI")
