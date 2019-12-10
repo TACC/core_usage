@@ -419,8 +419,10 @@ int main(int argc, char *argv[]) {
 	if(GUI_On == 0) printf("To run the console version after one second.\n");	
 
 	szEnv_Log_CPU_Usage = getenv("LOG_CORE_USAGE");
-	if( (strcmp(szEnv_Log_CPU_Usage,"1")==0) || (strcmp(szEnv_Log_CPU_Usage,"YES")==0) || (strcmp(szEnv_Log_CPU_Usage,"ON")==0) )	{
-		bLog_CPU_Usage = 1;
+	if(szEnv_Log_CPU_Usage)	{
+		if( (strcmp(szEnv_Log_CPU_Usage,"1")==0) || (strcmp(szEnv_Log_CPU_Usage,"YES")==0) || (strcmp(szEnv_Log_CPU_Usage,"ON")==0) )	{
+			bLog_CPU_Usage = 1;
+		}
 	}
 
 	Init_Core_Stat();
